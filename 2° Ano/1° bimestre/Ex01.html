@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex - 01</title>
+</head>
+<body>
+    <script>
+        const n = [];
+
+        for (let i = 0; i < 3; i++) {
+            n[i] = parseInt(prompt('Digite a nota : '));
+        }
+
+        const media = (n[0] + n[1] + n[2]) / 3;
+
+        alert(`A média calculada do aluno é ${media}`);
+
+        if (media >= 6) {alert('Aprovado')}
+        if (media <= 3 && media < 6) {alert('Intervenção')}
+        if (media < 3) {alert('Recuperação')}
+    </script>
+</body>
+</html>

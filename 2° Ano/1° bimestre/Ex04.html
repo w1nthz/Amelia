@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Resistência</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            margin: 50px; 
+            background-color: #000;
+            color: white;
+        }
+        .container { 
+            max-width: 350px; 
+            margin: auto; 
+            padding: 20px; 
+            border: 1px solid #ddd; 
+            border-radius: 10px; 
+        }
+        select, button, input { 
+            width: 100%; 
+            margin: 10px 0; 
+            padding: 8px; 
+        }
+        .resultado { 
+            margin-top: 20px; 
+            font-weight: bold; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Calculadora de Resistência</h2>
+        <form id="resistorForm">
+            <label>Faixa 1</label>
+            <select id="faixa1"></select>
+
+            <label>Faixa 2</label>
+            <select id="faixa2"></select>
+
+            <label>Multiplicador</label>
+            <select id="multiplicador"></select>
+            <button type="button" onclick="calcularResistencia()">Calcular Resistência</button>
+            <input type="text" id="resistencia" placeholder="Resistência (Ω)" readonly>
+        </form>
+        <div class="resultado" id="resultado"></div>
+    </div>
+
+    <script>
+        const cores = [
+            { nome: "Preto", valor: 0, multiplicador: 1 },
+            { nome: "Marrom", valor: 1, multiplicador: 10 },
+            { nome: "Vermelho", valor: 2, multiplicador: 100 },
+            { nome: "Laranja", valor: 3, multiplicador: 1000 },
+            { nome: "Amarelo", valor: 4, multiplicador: 10000 },
+            { nome: "Verde", valor: 5, multiplicador: 100000 },
+            { nome: "Azul", valor: 6, multiplicador: 1000000 },
+            { nome: "Violeta", valor: 7, multiplicador: 10000000 },
+            { nome: "Cinza", valor: 8, multiplicador: 100000000 },
+            { nome: "Branco", valor: 9, multiplicador: 1000000000 }
+        ];
+
+        function preencherSelects() {
+            let selects = ["faixa1", "faixa2", "multiplicador"];
+            selects.forEach(id => {
+                let select = document.getElementById(id);
+                cores.forEach(cor => {
+                    let option = document.createElement("option");
+                    option.value = id === "multiplicador" ? cor.multiplicador : cor.valor;
+                    option.textContent = cor.nome;
+                    select.appendChild(option);
+                });
+            });
+        }
+
+        function calcularResistencia() {
+            let valor1 = parseInt(document.getElementById('faixa1').value);
+            let valor2 = parseInt(document.getElementById('faixa2').value);
+            let multiplicador = parseInt(document.getElementById('multiplicador').value);
+            
+            let resistencia = (valor1 * 10 + valor2) * multiplicador;
+            document.getElementById('resistencia').value = resistencia + " Ω";
+        }
+
+        window.onload = preencherSelects;
+    </script>
+</body>
+</html>

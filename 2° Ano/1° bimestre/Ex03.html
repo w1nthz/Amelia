@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex - 03</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000;
+            color: white;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        section {
+            background-color: rgb(127, 159, 255);
+            height: 60vh;
+            width: 30vw;
+            border-radius: 2rem;
+            box-shadow: 0 0 10px #444;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        #notas {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        input {
+            font-size: 1rem;
+        }
+
+        button {
+            font-size: 1rem;
+            border-radius: 0.2rem;
+        }
+
+    </style>
+</head>
+<body>
+    <section>
+        <h1>Aluno</h1>
+        <div id="notas">
+            <input type="number" placeholder="Digite a primeira nota" id="n1">
+            <input type="number" placeholder="Digite a segunda nota" id="n2">
+            <input type="number" placeholder="Digite a terceira nota" id="n3">
+        </div>
+        <div><button type="submit" id="media" onclick="calcularMedia()">Calcular média</button></div>
+        <input type="text" placeholder="Resultado" id="result" readonly>
+        <div id="situacao">
+
+        </div>
+    </section>
+    <script>
+        function calcularMedia () {
+            let n1 = parseInt(document.querySelector('#n1').value) || 0;
+            let n2 = parseInt(document.querySelector('#n2').value) || 0;
+            let n3 = parseInt(document.querySelector('#n3').value) || 0;
+
+            let media = (n1 + n2 + n3) / 3;
+            document.getElementById('result').value = media.toFixed(2);
+
+            let situacao = '';
+
+            if (media >= 6) {
+                situacao = 'Aprovado';
+            } else if (media >= 3 || media < 6) {
+                situacao = 'Intervenção';
+            } else if (media < 3) {
+                situacao = 'Recuperação';
+            }
+
+            document.getElementById('situacao').innerText = 'Situação: ' + situacao;
+
+        }
+        
+    </script>
+</body>
+</html>
