@@ -1,0 +1,73 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+background-color: #fff;
+font-family: sans-serif;
+display: flex;
+justify-content: center;
+align-items: center;
+min-height: 100vh;
+}
+
+.container {
+width: 100%;
+max-width: 400px;
+padding: 1rem;
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.campo {
+margin-bottom: 1rem;
+width: 100%;
+}
+
+.campo label {
+display: block;
+margin-bottom: 0.3rem;
+font-weight: bold;
+}
+
+.campo input {
+width: 100%;
+padding: 0.5rem;
+font-size: 1rem;
+}
+
+.icone {
+width: 30px;
+height: auto;
+vertical-align: middle;
+margin-right: 0.5rem;
+}
+
+.botoes {
+display: flex;
+flex-wrap: wrap;
+gap: 0.5rem;
+justify-content: center;
+}
+
+.botoes button {
+padding: 0.8rem 1rem;
+font-size: 0.9rem;
+border: none;
+border-radius: 8px;
+background-color: black;
+color: white;
+cursor: pointer;
+flex: 1 1 45%;
+}
+
+.botoes .deletar {
+background-color: red;
+color: white;
+flex: 1 1 95%;
+}
+
+#resultado {
+margin-top: 20px;
+font-size: 1.2rem;
+text-align: center;
+}
